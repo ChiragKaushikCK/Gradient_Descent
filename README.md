@@ -176,29 +176,29 @@
   Compute the partial derivatives of the function, which represent the slope in each dimension.
 </p>
 <pre style="background-color: #2D2D2D; color: #E0E0E0; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: 'Fira Code', monospace; font-size: 0.95em; box-shadow: 0 2px 10px rgba(0,0,0,0.15);"><code><span style="color: #569CD6;">def</span> <span style="color: #6A9955;">df_dx</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>):
-    <span style="color: #C586C0;">return</span> <span style="color: #B5CEA8;">2</span> <span style="color: #C586C0;">*</span> <span style="color: #9CDCFE;">x</span>
+<span style="color: #C586C0;">return</span> <span style="color: #B5CEA8;">2</span> <span style="color: #C586C0;">*</span> <span style="color: #9CDCFE;">x</span>
 
 <span style="color: #569CD6;">def</span> <span style="color: #6A9955;">df_dy</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>):
-    <span style="color: #C586C0;">return</span> <span style="color: #B5CEA8;">2</span> <span style="color: #C586C0;">*</span> <span style="color: #9CDCFE;">y</span></code></pre>
+<span style="color: #C586C0;">return</span> <span style="color: #B5CEA8;">2</span> <span style="color: #C586C0;">*</span> <span style="color: #9CDCFE;">y</span></code></pre>
 
 <h3 style="color: #4CAF50; font-size: 1.8em; margin-top: 25px;">Gradient Descent Core `gradient_descent(...)`:</h3>
 <p style="font-size: 1.1em; color: #444; line-height: 1.6;">
 The main function that performs the iterative optimization.
 </p>
 <pre style="background-color: #2D2D2D; color: #E0E0E0; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: 'Fira Code', monospace; font-size: 0.95em; box-shadow: 0 2px 10px rgba(0,0,0,0.15);"><code><span style="color: #569CD6;">def</span> <span style="color: #6A9955;">gradient_descent</span>(<span style="color: #9CDCFE;">start_x</span>, <span style="color: #9CDCFE;">start_y</span>, <span style="color: #9CDCFE;">learning_rate</span>, <span style="color: #9CDCFE;">num_iterations</span>):
-    <span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">start_x</span>, <span style="color: #9CDCFE;">start_y</span>
-    <span style="color: #9CDCFE;">history</span> <span style="color: #CE9178;">=</span> [(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>, <span style="color: #9CDCFE;">f</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>))]
+<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">start_x</span>, <span style="color: #9CDCFE;">start_y</span>
+<span style="color: #9CDCFE;">history</span> <span style="color: #CE9178;">=</span> [(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>, <span style="color: #9CDCFE;">f</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>))]
 
-    <span style="color: #569CD6;">for</span> <span style="color: #9CDCFE;">_</span> <span style="color: #CE9178;">in</span> <span style="color: #569CD6;">range</span>(<span style="color: #9CDCFE;">num_iterations</span>):
-        <span style="color: #9CDCFE;">grad_x</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">df_dx</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>)
-        <span style="color: #9CDCFE;">grad_y</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">df_dy</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>)
+<span style="color: #569CD6;">for</span> <span style="color: #9CDCFE;">_</span> <span style="color: #CE9178;">in</span> <span style="color: #569CD6;">range</span>(<span style="color: #9CDCFE;">num_iterations</span>):
+<span style="color: #9CDCFE;">grad_x</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">df_dx</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>)
+<span style="color: #9CDCFE;">grad_y</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">df_dy</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>)
 
-        <span style="color: #9CDCFE;">x</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">x</span> <span style="color: #CE9178;">-</span> <span style="color: #9CDCFE;">learning_rate</span> <span style="color: #CE9178;">*</span> <span style="color: #9CDCFE;">grad_x</span>
-        <span style="color: #9CDCFE;">y</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">y</span> <span style="color: #CE9178;">-</span> <span style="color: #9CDCFE;">learning_rate</span> <span style="color: #CE9178;">*</span> <span style="color: #9CDCFE;">grad_y</span>
+<span style="color: #9CDCFE;">x</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">x</span> <span style="color: #CE9178;">-</span> <span style="color: #9CDCFE;">learning_rate</span> <span style="color: #CE9178;">*</span> <span style="color: #9CDCFE;">grad_x</span>
+<span style="color: #9CDCFE;">y</span> <span style="color: #CE9178;">=</span> <span style="color: #9CDCFE;">y</span> <span style="color: #CE9178;">-</span> <span style="color: #9CDCFE;">learning_rate</span> <span style="color: #CE9178;">*</span> <span style="color: #9CDCFE;">grad_y</span>
 
-        <span style="color: #9CDCFE;">history.append</span>((<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>, <span style="color: #9CDCFE;">f</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>)))
+<span style="color: #9CDCFE;">history.append</span>((<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>, <span style="color: #9CDCFE;">f</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>)))
 
-    <span style="color: #C586C0;">return</span> <span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>, <span style="color: #9CDCFE;">f</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>), <span style="color: #9CDCFE;">history</span></code></pre>
+<span style="color: #C586C0;">return</span> <span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>, <span style="color: #9CDCFE;">f</span>(<span style="color: #9CDCFE;">x</span>, <span style="color: #9CDCFE;">y</span>), <span style="color: #9CDCFE;">history</span></code></pre>
 
 
 <h2 id="customization-ideas" style="color: #333; font-family: 'Segoe UI', sans-serif; font-size: 2.5em; border-bottom: 3px solid #FFD700; padding-bottom: 10px;">
